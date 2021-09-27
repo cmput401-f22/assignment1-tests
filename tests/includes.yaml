@@ -1,0 +1,13 @@
+# includes.yaml
+---
+
+name: Assignment 1 Test Variables
+description: Assignment 1 Test Variables
+
+variables:
+  apikey: hK0iP5dL7bW3fP3y
+  # host: 
+  host: 127.0.0.1
+  port: 8000
+  isbn13: "8743951768162"
+  

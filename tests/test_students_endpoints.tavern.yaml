@@ -1,0 +1,203 @@
+---
+test_name: Endpoints _ 1. Add new book
+
+includes:
+  - !include includes.yaml
+
+strict:
+  - json:off
+
+stages:
+  - name: Delete test book (if it exists)
+
+    request:
+      url: http://{host:s}:{port:d}/books
+      follow_redirects: true
+      method: DELETE
+      params:
+        apikey: "{apikey:s}"
+      timeout: 1.0
+
+  - name: Add new book
+
+    request:
+      url: http://{host:s}:{port:d}/books
+      follow_redirects: true
+      method: POST
+      params:
+        apikey: "{apikey:s}"
+      json:
+        title: "Test book"
+        isbn13: "{isbn13:s}"
+        details: "Test book description"
+        publisher: "Test publisher"
+        year: 2019
+        price: 23.00
+      timeout: 1.0
+    response:
+      status_code: [200, 201]
+
+---
+test_name: Endpoints _ 2. Fetch new book
+
+includes:
+  - !include includes.yaml
+
+strict:
+  - json:off
+
+stages:
+  - name: Fetch book
+
+    request:
+      url: http://{host:s}:{port:d}/books/{isbn13:s}
+      follow_redirects: true
+      method: GET
+      params:
+        apikey: "{apikey:s}"
+      timeout: 1.0
+
+    response:
+      status_code: 200
+      json:
+        title: "Test book"
+        isbn13: "{isbn13:s}"
+        details: "Test book description"
+        publisher: "Test publisher"
+        year: 2019
+        price: 23.00
+
+---
+test_name: Endpoints _ 3. Check total number of books
+
+includes:
+  - !include includes.yaml
+
+strict:
+  - json:off
+
+stages:
+  - name: Check total number of books
+
+    request:
+      url: http://{host:s}:{port:d}/books
+      follow_redirects: true
+      method: GET
+      params:
+        apikey: "{apikey:s}"
+      timeout: 1.0
+
+    response:
+      status_code: 200
+      verify_response_with:
+        function: testing_utils:at_least_one_book
+
+---
+test_name: Endpoints _ 4. Update book
+
+includes:
+  - !include includes.yaml
+
+strict:
+  - json:off
+
+stages:
+  - name: Update the book
+
+    request:
+      url: http://{host:s}:{port:d}/books/{isbn13:s}
+      follow_redirects: true
+      method: PUT
+      params:
+        apikey: "{apikey:s}"
+      json:
+        title: "Updated test book"
+      timeout: 1.0
+
+    response:
+      status_code: [200, 201]
+      json:
+        status: 0
+        message: "Book updated"
+
+---
+test_name: Endpoints _ 5. Fetch updated book
+
+includes:
+  - !include includes.yaml
+
+strict:
+  - json:off
+
+stages:
+  - name: Retrive the updated book
+
+    request:
+      url: http://{host:s}:{port:d}/books/{isbn13:s}
+      follow_redirects: true
+      method: GET
+      params:
+        apikey: "{apikey:s}"
+      timeout: 1.0
+
+    response:
+      status_code: 200
+      json:
+        title: "Updated test book"
+        isbn13: "{isbn13:s}"
+        details: "Test book description"
+        publisher: "Test publisher"
+        year: 2019
+        price: 23.00
+
+---
+test_name: Endpoints _ 6. Delete book
+
+includes:
+  - !include includes.yaml
+
+strict:
+  - json:off
+
+stages:
+  - name: Delete the book
+
+    request:
+      url: http://{host:s}:{port:d}/books/{isbn13:s}
+      follow_redirects: true
+      method: DELETE
+      params:
+        apikey: "{apikey:s}"
+      timeout: 1.0
+
+    response:
+      status_code: [200, 201]
+      json:
+        status: 0
+        message: "Book deleted"
+
+---
+test_name: Endpoints _ 7. Fetch deleted book
+
+includes:
+  - !include includes.yaml
+
+strict:
+  - json:off
+
+stages:
+  - name: Retrive the deleted book
+
+    request:
+      url: http://{host:s}:{port:d}/books/{isbn13:s}
+      follow_redirects: true
+      method: GET
+      params:
+        apikey: "{apikey:s}"
+      timeout: 1.0
+
+    response:
+      verify_response_with:
+        function: testing_utils:book_deleted
+        extra_kwargs:
+          isbn13: "{isbn13:s}"
