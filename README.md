@@ -23,8 +23,17 @@ Update your host and port settings in `includes.yaml`. Leave `127.0.0.1` if you'
 
 Run the tests.
 
+On Linux:
+
 ```
 PYTHONPATH=$PYTHONPATH:tests pytest tests/ -v
+```
+
+On Windows (replace: `C:\my_folder` with your actual path to the `assignment1-tests`)
+
+```
+set PYTHONPATH=%PYTHONPATH%;C:\my_folder\assignment1-tests\tests
+pytests tests/ -v
 ```
 
 ## Writing new tests
