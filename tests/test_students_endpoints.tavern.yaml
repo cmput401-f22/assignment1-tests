@@ -1,5 +1,5 @@
 ---
-test_name: Endpoints _ 1. Test Endpoints
+test_name: Endpoints _ 1. Add New Coffee
 
 includes:
   - !include includes.yaml
@@ -28,6 +28,50 @@ stages:
         region: "Test region"
         fermentation: "Test fermentation"
         price: 99.00
+
+    response:
+      status_code: [200, 201]
+      save:
+        json:
+          coffee_id: id
+
+  - name: Delete the coffee
+
+    request:
+      url: http://{host:s}:{port:d}/coffees/{coffee_id:d}
+      follow_redirects: true
+      method: DELETE
+      timeout: 1.0
+
+    response:
+      status_code: [200, 201]
+      json:
+        status: 0
+        message: "Coffee deleted"
+
+---
+test_name: Endpoints _ 2. Fetch New Coffee
+
+includes:
+  - !include includes.yaml
+
+strict:
+  - json:off
+
+stages:
+  - name: Add new coffee
+
+    request:
+      url: http://{host:s}:{port:d}/coffees
+      follow_redirects: true
+      method: POST
+      json:
+        name: "Test coffee"
+        farm: "Test farm"
+        region: "Test region"
+        fermentation: "Test fermentation"
+        price: 99.00
+
     response:
       status_code: [200, 201]
       save:
@@ -51,6 +95,49 @@ stages:
         fermentation: "Test fermentation"
         price: 99.00
 
+  - name: Delete the coffee
+
+    request:
+      url: http://{host:s}:{port:d}/coffees/{coffee_id:d}
+      follow_redirects: true
+      method: DELETE
+      timeout: 1.0
+
+    response:
+      status_code: [200, 201]
+      json:
+        status: 0
+        message: "Coffee deleted"
+
+---
+test_name: Endpoints _ 3. Check Total Number of Coffees
+
+includes:
+  - !include includes.yaml
+
+strict:
+  - json:off
+
+stages:
+  - name: Add new coffee
+
+    request:
+      url: http://{host:s}:{port:d}/coffees
+      follow_redirects: true
+      method: POST
+      json:
+        name: "Test coffee"
+        farm: "Test farm"
+        region: "Test region"
+        fermentation: "Test fermentation"
+        price: 99.00
+
+    response:
+      status_code: [200, 201]
+      save:
+        json:
+          coffee_id: id
+
   - name: Check total number of coffees
 
     request:
@@ -63,6 +150,49 @@ stages:
       status_code: 200
       verify_response_with:
         function: testing_utils:at_least_one_coffee
+
+  - name: Delete the coffee
+
+    request:
+      url: http://{host:s}:{port:d}/coffees/{coffee_id:d}
+      follow_redirects: true
+      method: DELETE
+      timeout: 1.0
+
+    response:
+      status_code: [200, 201]
+      json:
+        status: 0
+        message: "Coffee deleted"
+
+---
+test_name: Endpoints _ 4. Update Coffee
+
+includes:
+  - !include includes.yaml
+
+strict:
+  - json:off
+
+stages:
+  - name: Add new coffee
+
+    request:
+      url: http://{host:s}:{port:d}/coffees
+      follow_redirects: true
+      method: POST
+      json:
+        name: "Test coffee"
+        farm: "Test farm"
+        region: "Test region"
+        fermentation: "Test fermentation"
+        price: 99.00
+
+    response:
+      status_code: [200, 201]
+      save:
+        json:
+          coffee_id: id
 
   - name: Update coffee
 
@@ -101,6 +231,49 @@ stages:
         fermentation: "Updated test fermentation"
         price: 100.00
 
+  - name: Delete the coffee
+
+    request:
+      url: http://{host:s}:{port:d}/coffees/{coffee_id:d}
+      follow_redirects: true
+      method: DELETE
+      timeout: 1.0
+
+    response:
+      status_code: [200, 201]
+      json:
+        status: 0
+        message: "Coffee deleted"
+
+---
+test_name: Endpoints _ 5. Modify Coffee
+
+includes:
+  - !include includes.yaml
+
+strict:
+  - json:off
+
+stages:
+  - name: Add new coffee
+
+    request:
+      url: http://{host:s}:{port:d}/coffees
+      follow_redirects: true
+      method: POST
+      json:
+        name: "Test coffee"
+        farm: "Test farm"
+        region: "Test region"
+        fermentation: "Test fermentation"
+        price: 99.00
+
+    response:
+      status_code: [200, 201]
+      save:
+        json:
+          coffee_id: id
+
   - name: Modify coffee
 
     request:
@@ -128,11 +301,54 @@ stages:
     response:
       status_code: 200
       json:
-        name: "Updated test coffee"
+        name: "Test coffee"
         farm: "Modified test farm"
-        region: "Updated test region"
-        fermentation: "Updated test fermentation"
-        price: 100.00
+        region: "Test region"
+        fermentation: "Test fermentation"
+        price: 99.00
+
+  - name: Delete the coffee
+
+    request:
+      url: http://{host:s}:{port:d}/coffees/{coffee_id:d}
+      follow_redirects: true
+      method: DELETE
+      timeout: 1.0
+
+    response:
+      status_code: [200, 201]
+      json:
+        status: 0
+        message: "Coffee deleted"
+
+---
+test_name: Endpoints _ 6. Delete Coffee
+
+includes:
+  - !include includes.yaml
+
+strict:
+  - json:off
+
+stages:
+  - name: Add new coffee
+
+    request:
+      url: http://{host:s}:{port:d}/coffees
+      follow_redirects: true
+      method: POST
+      json:
+        name: "Test coffee"
+        farm: "Test farm"
+        region: "Test region"
+        fermentation: "Test fermentation"
+        price: 99.00
+
+    response:
+      status_code: [200, 201]
+      save:
+        json:
+          coffee_id: id
 
   - name: Delete the coffee
 
