@@ -5,7 +5,5 @@ name: Assignment 1 Test Variables
 description: Assignment 1 Test Variables
 
 variables:
-  # host: 
   host: 127.0.0.1
   port: 8000
-  

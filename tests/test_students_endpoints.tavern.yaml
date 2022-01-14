@@ -1,5 +1,5 @@
 ---
-test_name: Endpoints _ 1. Add new coffee
+test_name: Endpoints _ 1. Test Endpoints
 
 includes:
   - !include includes.yaml
@@ -34,16 +34,6 @@ stages:
         json:
           coffee_id: id
 
----
-test_name: Endpoints _ 2. Fetch new coffee
-
-includes:
-  - !include includes.yaml
-
-strict:
-  - json:off
-
-stages:
   - name: Fetch new coffee
 
     request:
@@ -61,16 +51,6 @@ stages:
         fermentation: "Test fermentation"
         price: 99.00
 
----
-test_name: Endpoints _ 3. Check total number of coffees
-
-includes:
-  - !include includes.yaml
-
-strict:
-  - json:off
-
-stages:
   - name: Check total number of coffees
 
     request:
@@ -84,16 +64,6 @@ stages:
       verify_response_with:
         function: testing_utils:at_least_one_coffee
 
----
-test_name: Endpoints _ 4. Update coffee
-
-includes:
-  - !include includes.yaml
-
-strict:
-  - json:off
-
-stages:
   - name: Update coffee
 
     request:
@@ -114,16 +84,6 @@ stages:
         status: 0
         message: "Coffee updated"
 
----
-test_name: Endpoints _ 5. Fetch updated coffee
-
-includes:
-  - !include includes.yaml
-
-strict:
-  - json:off
-
-stages:
   - name: Retrieve the updated coffee
 
     request:
@@ -141,16 +101,6 @@ stages:
         fermentation: "Updated test fermentation"
         price: 100.00
 
----
-test_name: Endpoints _ 6. Modify coffee
-
-includes:
-  - !include includes.yaml
-
-strict:
-  - json:off
-
-stages:
   - name: Modify coffee
 
     request:
@@ -167,16 +117,6 @@ stages:
         status: 0
         message: "Coffee modified"
 
----
-test_name: Endpoints _ 7. Fetch modified coffee
-
-includes:
-  - !include includes.yaml
-
-strict:
-  - json:off
-
-stages:
   - name: Retrieve the modified coffee
 
     request:
@@ -194,16 +134,6 @@ stages:
         fermentation: "Updated test fermentation"
         price: 100.00
 
----
-test_name: Endpoints _ 8. Delete coffee
-
-includes:
-  - !include includes.yaml
-
-strict:
-  - json:off
-
-stages:
   - name: Delete the coffee
 
     request:
@@ -218,16 +148,6 @@ stages:
         status: 0
         message: "Coffee deleted"
 
----
-test_name: Endpoints _ 9. Fetch deleted coffee
-
-includes:
-  - !include includes.yaml
-
-strict:
-  - json:off
-
-stages:
   - name: Retrieve the deleted coffee
 
     request:

@@ -1,4 +1,5 @@
 # testing_utils.py
+
 def coffee_deleted(response, id):
     """Make sure that the given coffee is deleted
     """
