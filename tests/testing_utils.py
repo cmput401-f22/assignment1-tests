@@ -1,10 +1,10 @@
 # testing_utils.py
-def book_deleted(response, isbn13):
-    """Make sure that the given book is deleted
+def coffee_deleted(response, id):
+    """Make sure that the given coffee is deleted
     """
-    assert not response.json().get("isbn13") == isbn13
+    assert not response.json().get("id") == id
 
-def at_least_one_book(response):
-    """Make sure that there is at least one book in the DB
+def at_least_one_coffee(response):
+    """Make sure that there is at least one coffee in the DB
     """
     assert response.json().get("total") > 0

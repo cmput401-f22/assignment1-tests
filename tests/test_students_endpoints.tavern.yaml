@@ -1,5 +1,5 @@
 ---
-test_name: Endpoints _ 1. Add new book
+test_name: Endpoints _ 1. Add new coffee
 
 includes:
   - !include includes.yaml
@@ -8,37 +8,34 @@ strict:
   - json:off
 
 stages:
-  - name: Delete test book (if it exists)
+  - name: Delete test coffee (if it exists)
 
     request:
-      url: http://{host:s}:{port:d}/books
+      url: http://{host:s}:{port:d}/coffees
       follow_redirects: true
       method: DELETE
-      params:
-        apikey: "{apikey:s}"
       timeout: 1.0
 
-  - name: Add new book
+  - name: Add new coffee
 
     request:
-      url: http://{host:s}:{port:d}/books
+      url: http://{host:s}:{port:d}/coffees
       follow_redirects: true
       method: POST
-      params:
-        apikey: "{apikey:s}"
       json:
-        title: "Test book"
-        isbn13: "{isbn13:s}"
-        details: "Test book description"
-        publisher: "Test publisher"
-        year: 2019
-        price: 23.00
-      timeout: 1.0
+        name: "Test coffee"
+        farm: "Test farm"
+        region: "Test region"
+        fermentation: "Test fermentation"
+        price: 99.00
     response:
       status_code: [200, 201]
+      save:
+        json:
+          coffee_id: id
 
 ---
-test_name: Endpoints _ 2. Fetch new book
+test_name: Endpoints _ 2. Fetch new coffee
 
 includes:
   - !include includes.yaml
@@ -47,28 +44,25 @@ strict:
   - json:off
 
 stages:
-  - name: Fetch book
+  - name: Fetch new coffee
 
     request:
-      url: http://{host:s}:{port:d}/books/{isbn13:s}
+      url: http://{host:s}:{port:d}/coffees/{coffee_id:d}
       follow_redirects: true
       method: GET
-      params:
-        apikey: "{apikey:s}"
       timeout: 1.0
 
     response:
       status_code: 200
       json:
-        title: "Test book"
-        isbn13: "{isbn13:s}"
-        details: "Test book description"
-        publisher: "Test publisher"
-        year: 2019
-        price: 23.00
+        name: "Test coffee"
+        farm: "Test farm"
+        region: "Test region"
+        fermentation: "Test fermentation"
+        price: 99.00
 
 ---
-test_name: Endpoints _ 3. Check total number of books
+test_name: Endpoints _ 3. Check total number of coffees
 
 includes:
   - !include includes.yaml
@@ -77,23 +71,21 @@ strict:
   - json:off
 
 stages:
-  - name: Check total number of books
+  - name: Check total number of coffees
 
     request:
-      url: http://{host:s}:{port:d}/books
+      url: http://{host:s}:{port:d}/coffees
       follow_redirects: true
       method: GET
-      params:
-        apikey: "{apikey:s}"
       timeout: 1.0
 
     response:
       status_code: 200
       verify_response_with:
-        function: testing_utils:at_least_one_book
+        function: testing_utils:at_least_one_coffee
 
 ---
-test_name: Endpoints _ 4. Update book
+test_name: Endpoints _ 4. Update coffee
 
 includes:
   - !include includes.yaml
@@ -102,26 +94,28 @@ strict:
   - json:off
 
 stages:
-  - name: Update the book
+  - name: Update coffee
 
     request:
-      url: http://{host:s}:{port:d}/books/{isbn13:s}
+      url: http://{host:s}:{port:d}/coffees/{coffee_id:d}
       follow_redirects: true
       method: PUT
-      params:
-        apikey: "{apikey:s}"
       json:
-        title: "Updated test book"
+        name: "Updated test coffee"
+        farm: "Updated test farm"
+        region: "Updated test region"
+        fermentation: "Updated test fermentation"
+        price: 100.00
       timeout: 1.0
 
     response:
       status_code: [200, 201]
       json:
         status: 0
-        message: "Book updated"
+        message: "Coffee updated"
 
 ---
-test_name: Endpoints _ 5. Fetch updated book
+test_name: Endpoints _ 5. Fetch updated coffee
 
 includes:
   - !include includes.yaml
@@ -130,28 +124,25 @@ strict:
   - json:off
 
 stages:
-  - name: Retrive the updated book
+  - name: Retrieve the updated coffee
 
     request:
-      url: http://{host:s}:{port:d}/books/{isbn13:s}
+      url: http://{host:s}:{port:d}/coffees/{coffee_id:d}
       follow_redirects: true
       method: GET
-      params:
-        apikey: "{apikey:s}"
       timeout: 1.0
 
     response:
       status_code: 200
       json:
-        title: "Updated test book"
-        isbn13: "{isbn13:s}"
-        details: "Test book description"
-        publisher: "Test publisher"
-        year: 2019
-        price: 23.00
+        name: "Updated test coffee"
+        farm: "Updated test farm"
+        region: "Updated test region"
+        fermentation: "Updated test fermentation"
+        price: 100.00
 
 ---
-test_name: Endpoints _ 6. Delete book
+test_name: Endpoints _ 6. Modify coffee
 
 includes:
   - !include includes.yaml
@@ -160,24 +151,24 @@ strict:
   - json:off
 
 stages:
-  - name: Delete the book
+  - name: Modify coffee
 
     request:
-      url: http://{host:s}:{port:d}/books/{isbn13:s}
+      url: http://{host:s}:{port:d}/coffees/{coffee_id:d}
       follow_redirects: true
-      method: DELETE
-      params:
-        apikey: "{apikey:s}"
+      method: PATCH
+      json:
+        farm: "Modified test farm"
       timeout: 1.0
 
     response:
       status_code: [200, 201]
       json:
         status: 0
-        message: "Book deleted"
+        message: "Coffee modified"
 
 ---
-test_name: Endpoints _ 7. Fetch deleted book
+test_name: Endpoints _ 7. Fetch modified coffee
 
 includes:
   - !include includes.yaml
@@ -186,19 +177,68 @@ strict:
   - json:off
 
 stages:
-  - name: Retrive the deleted book
+  - name: Retrieve the modified coffee
 
     request:
-      url: http://{host:s}:{port:d}/books/{isbn13:s}
+      url: http://{host:s}:{port:d}/coffees/{coffee_id:d}
       follow_redirects: true
       method: GET
-      params:
-        apikey: "{apikey:s}"
+      timeout: 1.0
+
+    response:
+      status_code: 200
+      json:
+        name: "Updated test coffee"
+        farm: "Modified test farm"
+        region: "Updated test region"
+        fermentation: "Updated test fermentation"
+        price: 100.00
+
+---
+test_name: Endpoints _ 8. Delete coffee
+
+includes:
+  - !include includes.yaml
+
+strict:
+  - json:off
+
+stages:
+  - name: Delete the coffee
+
+    request:
+      url: http://{host:s}:{port:d}/coffees/{coffee_id:d}
+      follow_redirects: true
+      method: DELETE
+      timeout: 1.0
+
+    response:
+      status_code: [200, 201]
+      json:
+        status: 0
+        message: "Coffee deleted"
+
+---
+test_name: Endpoints _ 9. Fetch deleted coffee
+
+includes:
+  - !include includes.yaml
+
+strict:
+  - json:off
+
+stages:
+  - name: Retrieve the deleted coffee
+
+    request:
+      url: http://{host:s}:{port:d}/coffees/{coffee_id:d}
+      follow_redirects: true
+      method: GET
       timeout: 1.0
 
     response:
       status_code: [200, 404]
       verify_response_with:
-        function: testing_utils:book_deleted
+        function: testing_utils:coffee_deleted
         extra_kwargs:
-          isbn13: "{isbn13:s}"
+          id: "{coffee_id:d}"
