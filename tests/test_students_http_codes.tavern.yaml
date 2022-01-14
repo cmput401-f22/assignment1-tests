@@ -11,59 +11,13 @@ stages:
   - name: Test
 
     request:
-      url: http://{host:s}:{port:d}/books
+      url: http://{host:s}:{port:d}/coffees
       follow_redirects: true
       method: GET
-      params:
-        apikey: "{apikey:s}"
       timeout: 1.0
 
     response:
       status_code: 200
-
----
-test_name: HTTP Codes _ 401 (Unauthorized) No API Key
-
-includes:
-  - !include includes.yaml
-
-strict:
-  - json:off
-
-stages:
-  - name: Test
-
-    request:
-      url: http://{host:s}:{port:d}/books
-      follow_redirects: true
-      method: GET
-      timeout: 1.0
-
-    response:
-      status_code: 401
-
----
-test_name: HTTP Codes _ 401 (Unauthorized) Wrong API Key
-
-includes:
-  - !include includes.yaml
-
-strict:
-  - json:off
-
-stages:
-  - name: Test
-
-    request:
-      url: http://{host:s}:{port:d}/books
-      follow_redirects: true
-      method: GET
-      params:
-        apikey: xxxxxxxxxx
-      timeout: 1.0
-
-    response:
-      status_code: 401
 
 ---
 test_name: HTTP Codes _ 404 (Not found)
@@ -81,8 +35,6 @@ stages:
       url: http://{host:s}:{port:d}/xxxxxxxxx
       follow_redirects: true
       method: GET
-      params:
-        apikey: "{apikey:s}"
       timeout: 1.0
 
     response:
@@ -101,11 +53,9 @@ stages:
   - name: Test
 
     request:
-      url: http://{host:s}:{port:d}/books
+      url: http://{host:s}:{port:d}/coffees
       follow_redirects: true
       method: DELETE
-      params:
-        apikey: "{apikey:s}"
       timeout: 1.0
 
     response:
