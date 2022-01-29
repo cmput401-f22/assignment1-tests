@@ -373,8 +373,4 @@ stages:
       timeout: 1.0
 
     response:
-      status_code: [200, 404]
-      verify_response_with:
-        function: testing_utils:coffee_deleted
-        extra_kwargs:
-          id: "{coffee_id:d}"
+      status_code: [404]
