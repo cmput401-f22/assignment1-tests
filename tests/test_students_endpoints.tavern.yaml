@@ -8,14 +8,6 @@ strict:
   - json:off
 
 stages:
-  - name: Delete test coffee (if it exists)
-
-    request:
-      url: http://{host:s}:{port:d}/coffees
-      follow_redirects: true
-      method: DELETE
-      timeout: 1.0
-
   - name: Add new coffee
 
     request:
