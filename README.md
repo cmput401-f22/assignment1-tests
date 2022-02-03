@@ -29,11 +29,11 @@ On Linux:
 PYTHONPATH=$PYTHONPATH:tests pytest tests/ -v
 ```
 
-On Windows (replace: `C:\my_folder` with your actual path to the `assignment1-tests`)
+On Windows (replace: `C:\my_folder` with your actual path to the `assignment1-tests`, don't forget to use quotes if your path includes spaces).
 
 ```
 set PYTHONPATH=%PYTHONPATH%;C:\my_folder\assignment1-tests\tests
-pytests tests/ -v
+pytest tests/ -v
 ```
 
 ## Writing new tests
