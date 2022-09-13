@@ -19,6 +19,7 @@ stages:
         description: "Test description"
         series: "Test series"
         pieces: "Test pieces"
+        minifigs: ["Test minifigs"]
         price: 99.00
 
     response:
@@ -62,6 +63,7 @@ stages:
         description: "Test description"
         series: "Test series"
         pieces: "Test pieces"
+        minifigs: ["Test minifigs"]
         price: 99.00
 
     response:
@@ -85,6 +87,7 @@ stages:
         description: "Test description"
         series: "Test series"
         pieces: "Test pieces"
+        minifigs: ["Test minifigs"]
         price: 99.00
 
   - name: Delete the set
@@ -102,7 +105,7 @@ stages:
         message: "Set deleted"
 
 ---
-test_name: Endpoints _ 3. Check Total Number of Coffees
+test_name: Endpoints _ 3. Check Total Number of Sets
 
 includes:
   - !include includes.yaml
@@ -122,6 +125,7 @@ stages:
         description: "Test description"
         series: "Test series"
         pieces: "Test pieces"
+        minifigs: ["Test minifigs"]
         price: 99.00
 
     response:
@@ -178,6 +182,7 @@ stages:
         description: "Test description"
         series: "Test series"
         pieces: "Test pieces"
+        minifigs: ["Test minifigs"]
         price: 99.00
 
     response:
@@ -197,6 +202,7 @@ stages:
         description: "Updated test description"
         series: "Updated test series"
         pieces: "Updated test pieces"
+        minifigs: ["Updated test minifigs"]
         price: 100.00
       timeout: 1.0
 
@@ -221,6 +227,7 @@ stages:
         description: "Updated test description"
         series: "Updated test series"
         pieces: "Updated test pieces"
+        minifigs: ["Updated test minifigs"]
         price: 100.00
 
   - name: Delete the set
@@ -258,6 +265,7 @@ stages:
         description: "Test description"
         series: "Test series"
         pieces: "Test pieces"
+        minifigs: ["Test minifigs"]
         price: 99.00
 
     response:
@@ -297,6 +305,7 @@ stages:
         description: "Modified test description"
         series: "Test series"
         pieces: "Test pieces"
+        minifigs: ["Test minifigs"]
         price: 99.00
 
   - name: Delete the set
@@ -334,6 +343,7 @@ stages:
         description: "Test description"
         series: "Test series"
         pieces: "Test pieces"
+        minifigs: ["Test minifigs"]
         price: 99.00
 
     response:
