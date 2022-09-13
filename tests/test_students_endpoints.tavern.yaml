@@ -16,9 +16,9 @@ stages:
       method: POST
       json:
         name: "Test set"
-        farm: "Test farm"
-        region: "Test region"
-        fermentation: "Test fermentation"
+        description: "Test description"
+        series: "Test series"
+        pieces: "Test pieces"
         price: 99.00
 
     response:
@@ -59,9 +59,9 @@ stages:
       method: POST
       json:
         name: "Test set"
-        farm: "Test farm"
-        region: "Test region"
-        fermentation: "Test fermentation"
+        description: "Test description"
+        series: "Test series"
+        pieces: "Test pieces"
         price: 99.00
 
     response:
@@ -82,9 +82,9 @@ stages:
       status_code: 200
       json:
         name: "Test set"
-        farm: "Test farm"
-        region: "Test region"
-        fermentation: "Test fermentation"
+        description: "Test description"
+        series: "Test series"
+        pieces: "Test pieces"
         price: 99.00
 
   - name: Delete the set
@@ -119,9 +119,9 @@ stages:
       method: POST
       json:
         name: "Test set"
-        farm: "Test farm"
-        region: "Test region"
-        fermentation: "Test fermentation"
+        description: "Test description"
+        series: "Test series"
+        pieces: "Test pieces"
         price: 99.00
 
     response:
@@ -175,9 +175,9 @@ stages:
       method: POST
       json:
         name: "Test set"
-        farm: "Test farm"
-        region: "Test region"
-        fermentation: "Test fermentation"
+        description: "Test description"
+        series: "Test series"
+        pieces: "Test pieces"
         price: 99.00
 
     response:
@@ -194,9 +194,9 @@ stages:
       method: PUT
       json:
         name: "Updated test set"
-        farm: "Updated test farm"
-        region: "Updated test region"
-        fermentation: "Updated test fermentation"
+        description: "Updated test description"
+        series: "Updated test series"
+        pieces: "Updated test pieces"
         price: 100.00
       timeout: 1.0
 
@@ -218,9 +218,9 @@ stages:
       status_code: 200
       json:
         name: "Updated test set"
-        farm: "Updated test farm"
-        region: "Updated test region"
-        fermentation: "Updated test fermentation"
+        description: "Updated test description"
+        series: "Updated test series"
+        pieces: "Updated test pieces"
         price: 100.00
 
   - name: Delete the set
@@ -255,9 +255,9 @@ stages:
       method: POST
       json:
         name: "Test set"
-        farm: "Test farm"
-        region: "Test region"
-        fermentation: "Test fermentation"
+        description: "Test description"
+        series: "Test series"
+        pieces: "Test pieces"
         price: 99.00
 
     response:
@@ -273,7 +273,7 @@ stages:
       follow_redirects: true
       method: PATCH
       json:
-        farm: "Modified test farm"
+        description: "Modified test description"
       timeout: 1.0
 
     response:
@@ -294,9 +294,9 @@ stages:
       status_code: 200
       json:
         name: "Test set"
-        farm: "Modified test farm"
-        region: "Test region"
-        fermentation: "Test fermentation"
+        description: "Modified test description"
+        series: "Test series"
+        pieces: "Test pieces"
         price: 99.00
 
   - name: Delete the set
@@ -331,9 +331,9 @@ stages:
       method: POST
       json:
         name: "Test set"
-        farm: "Test farm"
-        region: "Test region"
-        fermentation: "Test fermentation"
+        description: "Test description"
+        series: "Test series"
+        pieces: "Test pieces"
         price: 99.00
 
     response:
