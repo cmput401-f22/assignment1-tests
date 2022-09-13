@@ -1,5 +1,5 @@
 ---
-test_name: Endpoints _ 1. Add New Coffee
+test_name: Endpoints _ 1. Add New Set
 
 includes:
   - !include includes.yaml
@@ -8,14 +8,14 @@ strict:
   - json:off
 
 stages:
-  - name: Add new coffee
+  - name: Add new set
 
     request:
-      url: http://{host:s}:{port:d}/coffees
+      url: http://{host:s}:{port:d}/sets
       follow_redirects: true
       method: POST
       json:
-        name: "Test coffee"
+        name: "Test set"
         farm: "Test farm"
         region: "Test region"
         fermentation: "Test fermentation"
@@ -25,12 +25,12 @@ stages:
       status_code: [200, 201]
       save:
         json:
-          coffee_id: id
+          set_id: id
 
-  - name: Delete the coffee
+  - name: Delete the set
 
     request:
-      url: http://{host:s}:{port:d}/coffees/{coffee_id:d}
+      url: http://{host:s}:{port:d}/sets/{set_id:d}
       follow_redirects: true
       method: DELETE
       timeout: 1.0
@@ -39,10 +39,10 @@ stages:
       status_code: [200, 201]
       json:
         status: 0
-        message: "Coffee deleted"
+        message: "Set deleted"
 
 ---
-test_name: Endpoints _ 2. Fetch New Coffee
+test_name: Endpoints _ 2. Fetch New Set
 
 includes:
   - !include includes.yaml
@@ -51,14 +51,14 @@ strict:
   - json:off
 
 stages:
-  - name: Add new coffee
+  - name: Add new set
 
     request:
-      url: http://{host:s}:{port:d}/coffees
+      url: http://{host:s}:{port:d}/sets
       follow_redirects: true
       method: POST
       json:
-        name: "Test coffee"
+        name: "Test set"
         farm: "Test farm"
         region: "Test region"
         fermentation: "Test fermentation"
@@ -68,12 +68,12 @@ stages:
       status_code: [200, 201]
       save:
         json:
-          coffee_id: id
+          set_id: id
 
-  - name: Fetch new coffee
+  - name: Fetch new set
 
     request:
-      url: http://{host:s}:{port:d}/coffees/{coffee_id:d}
+      url: http://{host:s}:{port:d}/sets/{set_id:d}
       follow_redirects: true
       method: GET
       timeout: 1.0
@@ -81,16 +81,16 @@ stages:
     response:
       status_code: 200
       json:
-        name: "Test coffee"
+        name: "Test set"
         farm: "Test farm"
         region: "Test region"
         fermentation: "Test fermentation"
         price: 99.00
 
-  - name: Delete the coffee
+  - name: Delete the set
 
     request:
-      url: http://{host:s}:{port:d}/coffees/{coffee_id:d}
+      url: http://{host:s}:{port:d}/sets/{set_id:d}
       follow_redirects: true
       method: DELETE
       timeout: 1.0
@@ -99,7 +99,7 @@ stages:
       status_code: [200, 201]
       json:
         status: 0
-        message: "Coffee deleted"
+        message: "Set deleted"
 
 ---
 test_name: Endpoints _ 3. Check Total Number of Coffees
@@ -111,14 +111,14 @@ strict:
   - json:off
 
 stages:
-  - name: Add new coffee
+  - name: Add new set
 
     request:
-      url: http://{host:s}:{port:d}/coffees
+      url: http://{host:s}:{port:d}/sets
       follow_redirects: true
       method: POST
       json:
-        name: "Test coffee"
+        name: "Test set"
         farm: "Test farm"
         region: "Test region"
         fermentation: "Test fermentation"
@@ -128,12 +128,12 @@ stages:
       status_code: [200, 201]
       save:
         json:
-          coffee_id: id
+          set_id: id
 
-  - name: Check total number of coffees
+  - name: Check total number of sets
 
     request:
-      url: http://{host:s}:{port:d}/coffees
+      url: http://{host:s}:{port:d}/sets
       follow_redirects: true
       method: GET
       timeout: 1.0
@@ -141,12 +141,12 @@ stages:
     response:
       status_code: 200
       verify_response_with:
-        function: testing_utils:at_least_one_coffee
+        function: testing_utils:at_least_one_set
 
-  - name: Delete the coffee
+  - name: Delete the set
 
     request:
-      url: http://{host:s}:{port:d}/coffees/{coffee_id:d}
+      url: http://{host:s}:{port:d}/sets/{set_id:d}
       follow_redirects: true
       method: DELETE
       timeout: 1.0
@@ -155,10 +155,10 @@ stages:
       status_code: [200, 201]
       json:
         status: 0
-        message: "Coffee deleted"
+        message: "Set deleted"
 
 ---
-test_name: Endpoints _ 4. Update Coffee
+test_name: Endpoints _ 4. Update Set
 
 includes:
   - !include includes.yaml
@@ -167,14 +167,14 @@ strict:
   - json:off
 
 stages:
-  - name: Add new coffee
+  - name: Add new set
 
     request:
-      url: http://{host:s}:{port:d}/coffees
+      url: http://{host:s}:{port:d}/sets
       follow_redirects: true
       method: POST
       json:
-        name: "Test coffee"
+        name: "Test set"
         farm: "Test farm"
         region: "Test region"
         fermentation: "Test fermentation"
@@ -184,16 +184,16 @@ stages:
       status_code: [200, 201]
       save:
         json:
-          coffee_id: id
+          set_id: id
 
-  - name: Update coffee
+  - name: Update set
 
     request:
-      url: http://{host:s}:{port:d}/coffees/{coffee_id:d}
+      url: http://{host:s}:{port:d}/sets/{set_id:d}
       follow_redirects: true
       method: PUT
       json:
-        name: "Updated test coffee"
+        name: "Updated test set"
         farm: "Updated test farm"
         region: "Updated test region"
         fermentation: "Updated test fermentation"
@@ -204,12 +204,12 @@ stages:
       status_code: [200, 201]
       json:
         status: 0
-        message: "Coffee updated"
+        message: "Set updated"
 
-  - name: Retrieve the updated coffee
+  - name: Retrieve the updated set
 
     request:
-      url: http://{host:s}:{port:d}/coffees/{coffee_id:d}
+      url: http://{host:s}:{port:d}/sets/{set_id:d}
       follow_redirects: true
       method: GET
       timeout: 1.0
@@ -217,16 +217,16 @@ stages:
     response:
       status_code: 200
       json:
-        name: "Updated test coffee"
+        name: "Updated test set"
         farm: "Updated test farm"
         region: "Updated test region"
         fermentation: "Updated test fermentation"
         price: 100.00
 
-  - name: Delete the coffee
+  - name: Delete the set
 
     request:
-      url: http://{host:s}:{port:d}/coffees/{coffee_id:d}
+      url: http://{host:s}:{port:d}/sets/{set_id:d}
       follow_redirects: true
       method: DELETE
       timeout: 1.0
@@ -235,10 +235,10 @@ stages:
       status_code: [200, 201]
       json:
         status: 0
-        message: "Coffee deleted"
+        message: "Set deleted"
 
 ---
-test_name: Endpoints _ 5. Modify Coffee
+test_name: Endpoints _ 5. Modify Set
 
 includes:
   - !include includes.yaml
@@ -247,14 +247,14 @@ strict:
   - json:off
 
 stages:
-  - name: Add new coffee
+  - name: Add new set
 
     request:
-      url: http://{host:s}:{port:d}/coffees
+      url: http://{host:s}:{port:d}/sets
       follow_redirects: true
       method: POST
       json:
-        name: "Test coffee"
+        name: "Test set"
         farm: "Test farm"
         region: "Test region"
         fermentation: "Test fermentation"
@@ -264,12 +264,12 @@ stages:
       status_code: [200, 201]
       save:
         json:
-          coffee_id: id
+          set_id: id
 
-  - name: Modify coffee
+  - name: Modify set
 
     request:
-      url: http://{host:s}:{port:d}/coffees/{coffee_id:d}
+      url: http://{host:s}:{port:d}/sets/{set_id:d}
       follow_redirects: true
       method: PATCH
       json:
@@ -280,12 +280,12 @@ stages:
       status_code: [200, 201]
       json:
         status: 0
-        message: "Coffee modified"
+        message: "Set modified"
 
-  - name: Retrieve the modified coffee
+  - name: Retrieve the modified set
 
     request:
-      url: http://{host:s}:{port:d}/coffees/{coffee_id:d}
+      url: http://{host:s}:{port:d}/sets/{set_id:d}
       follow_redirects: true
       method: GET
       timeout: 1.0
@@ -293,16 +293,16 @@ stages:
     response:
       status_code: 200
       json:
-        name: "Test coffee"
+        name: "Test set"
         farm: "Modified test farm"
         region: "Test region"
         fermentation: "Test fermentation"
         price: 99.00
 
-  - name: Delete the coffee
+  - name: Delete the set
 
     request:
-      url: http://{host:s}:{port:d}/coffees/{coffee_id:d}
+      url: http://{host:s}:{port:d}/sets/{set_id:d}
       follow_redirects: true
       method: DELETE
       timeout: 1.0
@@ -311,10 +311,10 @@ stages:
       status_code: [200, 201]
       json:
         status: 0
-        message: "Coffee deleted"
+        message: "Set deleted"
 
 ---
-test_name: Endpoints _ 6. Delete Coffee
+test_name: Endpoints _ 6. Delete Set
 
 includes:
   - !include includes.yaml
@@ -323,14 +323,14 @@ strict:
   - json:off
 
 stages:
-  - name: Add new coffee
+  - name: Add new set
 
     request:
-      url: http://{host:s}:{port:d}/coffees
+      url: http://{host:s}:{port:d}/sets
       follow_redirects: true
       method: POST
       json:
-        name: "Test coffee"
+        name: "Test set"
         farm: "Test farm"
         region: "Test region"
         fermentation: "Test fermentation"
@@ -340,12 +340,12 @@ stages:
       status_code: [200, 201]
       save:
         json:
-          coffee_id: id
+          set_id: id
 
-  - name: Delete the coffee
+  - name: Delete the set
 
     request:
-      url: http://{host:s}:{port:d}/coffees/{coffee_id:d}
+      url: http://{host:s}:{port:d}/sets/{set_id:d}
       follow_redirects: true
       method: DELETE
       timeout: 1.0
@@ -354,12 +354,12 @@ stages:
       status_code: [200, 201]
       json:
         status: 0
-        message: "Coffee deleted"
+        message: "Set deleted"
 
-  - name: Retrieve the deleted coffee
+  - name: Retrieve the deleted set
 
     request:
-      url: http://{host:s}:{port:d}/coffees/{coffee_id:d}
+      url: http://{host:s}:{port:d}/sets/{set_id:d}
       follow_redirects: true
       method: GET
       timeout: 1.0
