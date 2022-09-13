@@ -18,7 +18,7 @@ stages:
         name: "Test set"
         description: "Test description"
         series: "Test series"
-        pieces: "Test pieces"
+        pieces: 99
         minifigs: ["Test minifigs"]
         price: 99.00
 
@@ -62,7 +62,7 @@ stages:
         name: "Test set"
         description: "Test description"
         series: "Test series"
-        pieces: "Test pieces"
+        pieces: 99
         minifigs: ["Test minifigs"]
         price: 99.00
 
@@ -86,7 +86,7 @@ stages:
         name: "Test set"
         description: "Test description"
         series: "Test series"
-        pieces: "Test pieces"
+        pieces: 99
         minifigs: ["Test minifigs"]
         price: 99.00
 
@@ -124,7 +124,7 @@ stages:
         name: "Test set"
         description: "Test description"
         series: "Test series"
-        pieces: "Test pieces"
+        pieces: 99
         minifigs: ["Test minifigs"]
         price: 99.00
 
@@ -181,7 +181,7 @@ stages:
         name: "Test set"
         description: "Test description"
         series: "Test series"
-        pieces: "Test pieces"
+        pieces: 99
         minifigs: ["Test minifigs"]
         price: 99.00
 
@@ -201,7 +201,7 @@ stages:
         name: "Updated test set"
         description: "Updated test description"
         series: "Updated test series"
-        pieces: "Updated test pieces"
+        pieces: 100
         minifigs: ["Updated test minifigs"]
         price: 100.00
       timeout: 1.0
@@ -226,7 +226,7 @@ stages:
         name: "Updated test set"
         description: "Updated test description"
         series: "Updated test series"
-        pieces: "Updated test pieces"
+        pieces: 100
         minifigs: ["Updated test minifigs"]
         price: 100.00
 
@@ -264,7 +264,7 @@ stages:
         name: "Test set"
         description: "Test description"
         series: "Test series"
-        pieces: "Test pieces"
+        pieces: 99
         minifigs: ["Test minifigs"]
         price: 99.00
 
@@ -304,7 +304,7 @@ stages:
         name: "Test set"
         description: "Modified test description"
         series: "Test series"
-        pieces: "Test pieces"
+        pieces: 99
         minifigs: ["Test minifigs"]
         price: 99.00
 
@@ -342,7 +342,7 @@ stages:
         name: "Test set"
         description: "Test description"
         series: "Test series"
-        pieces: "Test pieces"
+        pieces: 99
         minifigs: ["Test minifigs"]
         price: 99.00
 
