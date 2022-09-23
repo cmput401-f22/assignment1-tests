@@ -31,7 +31,7 @@ stages:
   - name: Delete the set
 
     request:
-      url: http://{host:s}:{port:d}/sets/{set_id:d}
+      url: http://{host:s}:{port:d}/sets/{set_id}
       follow_redirects: true
       method: DELETE
       timeout: 1.0
@@ -75,7 +75,7 @@ stages:
   - name: Fetch new set
 
     request:
-      url: http://{host:s}:{port:d}/sets/{set_id:d}
+      url: http://{host:s}:{port:d}/sets/{set_id}
       follow_redirects: true
       method: GET
       timeout: 1.0
@@ -93,7 +93,7 @@ stages:
   - name: Delete the set
 
     request:
-      url: http://{host:s}:{port:d}/sets/{set_id:d}
+      url: http://{host:s}:{port:d}/sets/{set_id}
       follow_redirects: true
       method: DELETE
       timeout: 1.0
@@ -150,7 +150,7 @@ stages:
   - name: Delete the set
 
     request:
-      url: http://{host:s}:{port:d}/sets/{set_id:d}
+      url: http://{host:s}:{port:d}/sets/{set_id}
       follow_redirects: true
       method: DELETE
       timeout: 1.0
@@ -194,7 +194,7 @@ stages:
   - name: Update set
 
     request:
-      url: http://{host:s}:{port:d}/sets/{set_id:d}
+      url: http://{host:s}:{port:d}/sets/{set_id}
       follow_redirects: true
       method: PUT
       json:
@@ -215,7 +215,7 @@ stages:
   - name: Retrieve the updated set
 
     request:
-      url: http://{host:s}:{port:d}/sets/{set_id:d}
+      url: http://{host:s}:{port:d}/sets/{set_id}
       follow_redirects: true
       method: GET
       timeout: 1.0
@@ -233,7 +233,7 @@ stages:
   - name: Delete the set
 
     request:
-      url: http://{host:s}:{port:d}/sets/{set_id:d}
+      url: http://{host:s}:{port:d}/sets/{set_id}
       follow_redirects: true
       method: DELETE
       timeout: 1.0
@@ -277,7 +277,7 @@ stages:
   - name: Modify set
 
     request:
-      url: http://{host:s}:{port:d}/sets/{set_id:d}
+      url: http://{host:s}:{port:d}/sets/{set_id}
       follow_redirects: true
       method: PATCH
       json:
@@ -293,7 +293,7 @@ stages:
   - name: Retrieve the modified set
 
     request:
-      url: http://{host:s}:{port:d}/sets/{set_id:d}
+      url: http://{host:s}:{port:d}/sets/{set_id}
       follow_redirects: true
       method: GET
       timeout: 1.0
@@ -311,7 +311,7 @@ stages:
   - name: Delete the set
 
     request:
-      url: http://{host:s}:{port:d}/sets/{set_id:d}
+      url: http://{host:s}:{port:d}/sets/{set_id}
       follow_redirects: true
       method: DELETE
       timeout: 1.0
@@ -355,7 +355,7 @@ stages:
   - name: Delete the set
 
     request:
-      url: http://{host:s}:{port:d}/sets/{set_id:d}
+      url: http://{host:s}:{port:d}/sets/{set_id}
       follow_redirects: true
       method: DELETE
       timeout: 1.0
@@ -369,7 +369,7 @@ stages:
   - name: Retrieve the deleted set
 
     request:
-      url: http://{host:s}:{port:d}/sets/{set_id:d}
+      url: http://{host:s}:{port:d}/sets/{set_id}
       follow_redirects: true
       method: GET
       timeout: 1.0
